@@ -7,7 +7,7 @@ namespace DoctorAppointmentWebService
 {
     public class PatientService : IPatientService
     {
-        private string connectionString = "Data Source=SRUSHTI\\SQLEXPRESS;Initial Catalog=DoctorAppointmentSystem;Integrated Security=True";
+        private string connectionString = "Data Source=localhost\\sqlexpress;Initial Catalog=DoctorAppointmentSystem;Integrated Security=True";
 
         public List<Patient> GetPatients()
         {
