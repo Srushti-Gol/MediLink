@@ -1,37 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoctorAppointmentWebService
 {
     [ServiceContract]
-    public interface IDoctorService
+    public interface IPatientService
     {
         [OperationContract]
-        List<Doctor> GetDoctors();
+        List<Patient> GetPatients();
 
         [OperationContract]
-        Doctor GetDoctorById(int doctorId);
+        Patient GetPatientById(int patientId);
 
         [OperationContract]
-        void AddDoctor(Doctor doctor);
+        void AddPatient(Patient patient);
 
         [OperationContract]
-        void UpdateDoctor(Doctor doctor);
+        void UpdatePatient(Patient patient);
 
         [OperationContract]
-        void DeleteDoctor(int doctorId);
+        void DeletePatient(int patientId);
     }
 
     [DataContract]
-    public class Doctor
+    public class Patient
     {
         [DataMember]
-        public int DoctorId { get; set; }
+        public int PatientId { get; set; }
 
         [DataMember]
         public string FirstName { get; set; }
@@ -40,7 +37,10 @@ namespace DoctorAppointmentWebService
         public string LastName { get; set; }
 
         [DataMember]
-        public string Specialty { get; set; }
+        public DateTime DateOfBirth { get; set; }
+
+        [DataMember]
+        public string Gender { get; set; }
 
         [DataMember]
         public string Email { get; set; }

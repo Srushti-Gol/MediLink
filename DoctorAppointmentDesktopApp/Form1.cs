@@ -1,86 +1,53 @@
-﻿using DoctorAppointmentDesktopApp.DoctorService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DoctorAppointmentDesktopApp
 {
     public partial class Form1 : Form
     {
-        private readonly DoctorServiceClient doctorServiceClient;
+        private Doctors form1;
+        private Patients form2;
 
         public Form1()
         {
             InitializeComponent();
-
-            // Initialize the DoctorServiceClient
-            doctorServiceClient = new DoctorServiceClient();
-
-            // Populate the DataGridView with doctors
-            RefreshDoctors();
         }
 
-        private void RefreshDoctors()
+        private void btnShowForm1_Click(object sender, EventArgs e)
         {
-            Doctor[] doctorsArray = doctorServiceClient.GetDoctors();
-            List<Doctor> doctors = doctorsArray.ToList();
-            dataGridViewDoctors.DataSource = doctors;
-        }
-
-        private void buttonAddDoctor_Click(object sender, EventArgs e)
-        {
-            Doctor doctor = new Doctor
+            if (form1 == null || form1.IsDisposed)
             {
-                FirstName = textBoxFirstName.Text,
-                LastName = textBoxLastName.Text,
-                Specialty = textBoxSpecialty.Text
-            };
-
-            doctorServiceClient.AddDoctor(doctor);
-            RefreshDoctors();
-        }
-
-        private void buttonUpdateDoctor_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewDoctors.SelectedRows.Count > 0)
-            {
-                int doctorId = (int)dataGridViewDoctors.SelectedRows[0].Cells["DoctorId"].Value;
-
-                Doctor doctor = new Doctor
-                {
-                    DoctorId = doctorId,
-                    FirstName = textBoxFirstName.Text,
-                    LastName = textBoxLastName.Text,
-                    Specialty = textBoxSpecialty.Text
-                };
-
-                doctorServiceClient.UpdateDoctor(doctor);
-                RefreshDoctors();
+                form1 = new Doctors();
+                form1.Show();
             }
             else
             {
-                MessageBox.Show("Please select a doctor to update.");
+                form1.BringToFront();
             }
         }
 
-        private void buttonDeleteDoctor_Click(object sender, EventArgs e)
+        private void btnShowForm2_Click(object sender, EventArgs e)
         {
-            if (dataGridViewDoctors.SelectedRows.Count > 0)
+            if (form2 == null || form2.IsDisposed)
             {
-                int doctorId = (int)dataGridViewDoctors.SelectedRows[0].Cells["DoctorId"].Value;
-                doctorServiceClient.DeleteDoctor(doctorId);
-                RefreshDoctors();
+                form2 = new Patients();
+                form2.Show();
             }
             else
             {
-                MessageBox.Show("Please select a doctor to delete.");
+                form2.BringToFront();
             }
         }
 
-        private void dataGridViewDoctors_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
+            // Set background color of the form
+            this.BackColor = Color.LightBlue;
 
+            // Set background color of specific controls
+            btnShowForm1.BackColor = Color.Yellow;
+            btnShowForm2.BackColor = Color.Green;
         }
     }
 }

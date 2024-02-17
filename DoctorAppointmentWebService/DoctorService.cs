@@ -31,7 +31,9 @@ namespace DoctorAppointmentWebService
                         DoctorId = Convert.ToInt32(reader["DoctorId"]),
                         FirstName = reader["FirstName"].ToString(),
                         LastName = reader["LastName"].ToString(),
-                        Specialty = reader["Specialty"].ToString()
+                        Specialty = reader["Specialty"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Phone = reader["Phone"].ToString()
                     };
 
                     doctors.Add(doctor);
@@ -65,7 +67,9 @@ namespace DoctorAppointmentWebService
                         DoctorId = Convert.ToInt32(reader["DoctorId"]),
                         FirstName = reader["FirstName"].ToString(),
                         LastName = reader["LastName"].ToString(),
-                        Specialty = reader["Specialty"].ToString()
+                        Specialty = reader["Specialty"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Phone = reader["Phone"].ToString()
                     };
                 }
 
@@ -79,12 +83,14 @@ namespace DoctorAppointmentWebService
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO Doctors (FirstName, LastName, Specialty) VALUES (@FirstName, @LastName, @Specialty)";
+                string query = "INSERT INTO Doctors (FirstName, LastName, Specialty, Email, Phone) VALUES (@FirstName, @LastName, @Specialty, @Email, @Phone)";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@FirstName", doctor.FirstName);
                 command.Parameters.AddWithValue("@LastName", doctor.LastName);
                 command.Parameters.AddWithValue("@Specialty", doctor.Specialty);
+                command.Parameters.AddWithValue("@Email", doctor.Email);
+                command.Parameters.AddWithValue("@Phone", doctor.Phone);
 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -95,12 +101,14 @@ namespace DoctorAppointmentWebService
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "UPDATE Doctors SET FirstName = @FirstName, LastName = @LastName, Specialty = @Specialty WHERE DoctorId = @DoctorId";
+                string query = "UPDATE Doctors SET FirstName = @FirstName, LastName = @LastName, Specialty = @Specialty, Email = @Email, Phone = @Phone WHERE DoctorId = @DoctorId";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@FirstName", doctor.FirstName);
                 command.Parameters.AddWithValue("@LastName", doctor.LastName);
                 command.Parameters.AddWithValue("@Specialty", doctor.Specialty);
+                command.Parameters.AddWithValue("@Email", doctor.Email);
+                command.Parameters.AddWithValue("@Phone", doctor.Phone);
                 command.Parameters.AddWithValue("@DoctorId", doctor.DoctorId);
 
                 connection.Open();
