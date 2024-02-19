@@ -79,5 +79,79 @@ namespace DoctorAppointmentDesktopApp
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Patients_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtGender_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
+            Patient newPatient = new Patient
+            {
+                FirstName = txtFirstName.Text,
+                LastName = txtLastName.Text,
+                DateOfBirth = dtpDateOfBirth.Value,
+                Gender = txtGender.Text,
+                Email = txtEmail.Text,
+                Phone = txtPhone.Text
+            };
+            _patientServiceClient.AddPatient(newPatient);
+            RefreshPatients();
+        }
+
+        private void btnUpdate_Click_1(object sender, EventArgs e)
+        {
+            if (selectedPatient != null)
+            {
+                selectedPatient.FirstName = txtFirstName.Text;
+                selectedPatient.LastName = txtLastName.Text;
+                selectedPatient.DateOfBirth = dtpDateOfBirth.Value;
+                selectedPatient.Gender = txtGender.Text;
+                selectedPatient.Email = txtEmail.Text;
+                selectedPatient.Phone = txtPhone.Text;
+                _patientServiceClient.UpdatePatient(selectedPatient);
+                RefreshPatients();
+            }
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            if (selectedPatient != null)
+            {
+                _patientServiceClient.DeletePatient(selectedPatient.PatientId);
+                RefreshPatients();
+            }
+        }
     }
 }

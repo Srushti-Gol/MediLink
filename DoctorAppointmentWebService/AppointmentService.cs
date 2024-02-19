@@ -7,7 +7,7 @@ namespace DoctorAppointmentWebService
 {
     public class AppointmentService : IAppointmentService
     {
-        private string connectionString = "Data Source=SRUSHTI\\SQLEXPRESS;Initial Catalog=DoctorAppointmentSystem;Integrated Security=True";
+        private string connectionString = "Data Source=localhost\\sqlexpress;Initial Catalog=DoctorAppointmentSystem;Integrated Security=True";
 
         public void ScheduleAppointment(int doctorId, int patientId, DateTime appointmentDateTime)
         {
@@ -125,5 +125,75 @@ namespace DoctorAppointmentWebService
 
             return appointments;
         }
+        public List<Doctor> GetDoctors()
+        {
+            List<Doctor> doctors = new List<Doctor>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Doctors";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Doctor doctor = new Doctor
+                    {
+                        DoctorId = Convert.ToInt32(reader["DoctorId"]),
+                        FirstName = reader["FirstName"].ToString(),
+                        LastName = reader["LastName"].ToString(),
+                        Specialty = reader["Specialty"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Phone = reader["Phone"].ToString()
+                    };
+
+                    doctors.Add(doctor);
+                }
+
+                reader.Close();
+            }
+
+            return doctors;
+        }
+        public List<Patient> GetPatients()
+        {
+            List<Patient> patients = new List<Patient>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Patients";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Patient patient = new Patient
+                    {
+                        PatientId = Convert.ToInt32(reader["PatientId"]),
+                        FirstName = reader["FirstName"].ToString(),
+                        LastName = reader["LastName"].ToString(),
+                        DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
+                        Gender = reader["Gender"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Phone = reader["Phone"].ToString()
+                    };
+
+                    patients.Add(patient);
+                }
+
+                reader.Close();
+            }
+
+            return patients;
+        }
+
     }
 }

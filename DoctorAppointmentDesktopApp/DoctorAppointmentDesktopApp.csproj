@@ -76,6 +76,11 @@
     <Compile Include="Appointments.Designer.cs">
       <DependentUpon>Appointments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\AppointmentService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\DoctorService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,6 +90,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashBoard.Designer.cs">
+      <DependentUpon>DashBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="Doctors.cs">
       <SubType>Form</SubType>
@@ -106,6 +117,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Appointments.resx">
+      <DependentUpon>Appointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashBoard.resx">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Doctors.resx">
       <DependentUpon>Doctors.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +141,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Connected Services\AppointmentService\DoctorAppointmentDesktopApp.AppointmentService.Appointment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AppointmentService\DoctorAppointmentDesktopApp.AppointmentService.Doctor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AppointmentService\DoctorAppointmentDesktopApp.AppointmentService.Patient.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AppointmentService\DoctorAppointmentWebService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AppointmentService\service.wsdl" />
+    <None Include="Connected Services\AppointmentService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AppointmentService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\DoctorService\DoctorAppointmentDesktopApp.DoctorService.Doctor.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -180,6 +216,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AppointmentService\" />
     <WCFMetadataStorage Include="Connected Services\DoctorService\" />
     <WCFMetadataStorage Include="Connected Services\PatientService\" />
   </ItemGroup>
@@ -203,6 +240,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\PatientService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AppointmentService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AppointmentService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AppointmentService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
