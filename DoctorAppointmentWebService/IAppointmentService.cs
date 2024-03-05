@@ -18,6 +18,8 @@ namespace DoctorAppointmentWebService
         [OperationContract]
         void CompleteAppointment(int appointmentId);
         [OperationContract]
+        List<Appointment> GetAllAppointments();
+        [OperationContract]
         List<Appointment> GetDoctorAppointments(int doctorId);
         [OperationContract]
         List<Appointment> GetPatientAppointments(int patientId);

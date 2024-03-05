@@ -7,7 +7,7 @@ namespace DoctorAppointmentWebService
 {
     public class AppointmentService : IAppointmentService
     {
-        private string connectionString = "Data Source=localhost\\sqlexpress;Initial Catalog=DoctorAppointmentSystem;Integrated Security=True";
+        private string connectionString = "Data Source=SRUSHTI\\SQLEXPRESS;Initial Catalog=DoctorAppointmentSystem;Integrated Security=True";
 
         public void ScheduleAppointment(int doctorId, int patientId, DateTime appointmentDateTime)
         {
@@ -19,7 +19,7 @@ namespace DoctorAppointmentWebService
                 command.Parameters.AddWithValue("@DoctorID", doctorId);
                 command.Parameters.AddWithValue("@PatientID", patientId);
                 command.Parameters.AddWithValue("@AppointmentDateTime", appointmentDateTime);
-                command.Parameters.AddWithValue("@StatusID", 1); // StatusID 1 represents 'Scheduled'
+                command.Parameters.AddWithValue("@StatusID", 1); 
 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -54,6 +54,40 @@ namespace DoctorAppointmentWebService
                 connection.Open();
                 command.ExecuteNonQuery();
             }
+        }
+
+        public List<Appointment> GetAllAppointments()
+        {
+            List<Appointment> appointments = new List<Appointment>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Appointments";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Appointment appointment = new Appointment
+                    {
+                        AppointmentID = Convert.ToInt32(reader["AppointmentID"]),
+                        DoctorID = Convert.ToInt32(reader["DoctorID"]),
+                        PatientID = Convert.ToInt32(reader["PatientID"]),
+                        AppointmentDateTime = Convert.ToDateTime(reader["AppointmentDateTime"]),
+                        StatusID = Convert.ToInt32(reader["StatusID"])
+                    };
+
+                    appointments.Add(appointment);
+                }
+
+                reader.Close();
+            }
+
+            return appointments;
         }
 
         public List<Appointment> GetDoctorAppointments(int doctorId)

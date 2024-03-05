@@ -25,7 +25,7 @@ namespace DoctorAppointmentDesktopApp
         {
             doctors = _appointmentServiceClient.GetDoctors();
             cbDoctors.DataSource = doctors;
-            cbDoctors.DisplayMember = "FullName";
+            cbDoctors.DisplayMember = "FirstName";
             cbDoctors.ValueMember = "DoctorId";
         }
 
@@ -33,17 +33,14 @@ namespace DoctorAppointmentDesktopApp
         {
             patients = _appointmentServiceClient.GetPatients();
             cbPatients.DataSource = patients;
-            cbPatients.DisplayMember = "FullName";
+            cbPatients.DisplayMember = "FirstName";
             cbPatients.ValueMember = "PatientId";
         }
 
         private void LoadAppointments()
         {
-            // Load appointments for a specific doctor or all doctors
-            // For example, assuming you have a doctorId variable or you can set it to any specific doctor
-            int doctorId = 1; // Change to the appropriate doctor ID or remove if you want to load appointments for all doctors
-            appointments = _appointmentServiceClient.GetDoctorAppointments(doctorId);
-            dataGridViewAppointments.DataSource = appointments;
+            appointments = _appointmentServiceClient.GetAllAppointments();
+            dataGridView1.DataSource = appointments;
         }
 
         private void btnScheduleAppointment_Click(object sender, EventArgs e)
@@ -56,11 +53,51 @@ namespace DoctorAppointmentDesktopApp
 
             MessageBox.Show("Appointment scheduled successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Refresh appointments after scheduling
             LoadAppointments();
         }
 
+        private void btnCancelAppointment_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedAppointmentId = (int)dataGridView1.SelectedRows[0].Cells["AppointmentID"].Value;
+
+                _appointmentServiceClient.CancelAppointment(selectedAppointmentId);
+
+                MessageBox.Show("Appointment cancelled successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LoadAppointments();
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to cancel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCompleteAppointment_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedAppointmentId = (int)dataGridView1.SelectedRows[0].Cells["AppointmentID"].Value;
+
+                _appointmentServiceClient.CompleteAppointment(selectedAppointmentId);
+
+                MessageBox.Show("Appointment completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LoadAppointments();
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to mark as completed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void ScheduleAppointmentForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
