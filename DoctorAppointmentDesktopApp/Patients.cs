@@ -1,4 +1,4 @@
-﻿using DoctorAppointmentDesktopApp.PatientService;
+﻿using DoctorAppointmentDesktopApp.PatientHostService;
 using System;
 using System.Windows.Forms;
 
@@ -12,7 +12,7 @@ namespace DoctorAppointmentDesktopApp
         public Patients()
         {
             InitializeComponent();
-            _patientServiceClient = new PatientService.PatientServiceClient();
+            _patientServiceClient = new PatientHostService.PatientServiceClient();
             RefreshPatients();
         }
 

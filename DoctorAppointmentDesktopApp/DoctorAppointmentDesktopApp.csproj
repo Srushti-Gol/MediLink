@@ -76,17 +76,17 @@
     <Compile Include="Appointments.Designer.cs">
       <DependentUpon>Appointments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\AppointmentService\Reference.cs">
+    <Compile Include="Connected Services\AppointmentHostService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\DoctorService\Reference.cs">
+    <Compile Include="Connected Services\DoctorHostService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\PatientService\Reference.cs">
+    <Compile Include="Connected Services\PatientHostService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -119,6 +119,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Appointments.resx">
       <DependentUpon>Appointments.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="DashBoard.resx">
       <DependentUpon>DashBoard.cs</DependentUpon>
@@ -141,49 +142,49 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\AppointmentService\DoctorAppointmentDesktopApp.AppointmentService.Appointment.datasource">
+    <None Include="Connected Services\AppointmentHostService\DoctorAppointmentDesktopApp.AppointmentHostService.Appointment.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\AppointmentService\DoctorAppointmentDesktopApp.AppointmentService.Doctor.datasource">
+    <None Include="Connected Services\AppointmentHostService\DoctorAppointmentDesktopApp.AppointmentHostService.Doctor.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\AppointmentService\DoctorAppointmentDesktopApp.AppointmentService.Patient.datasource">
+    <None Include="Connected Services\AppointmentHostService\DoctorAppointmentDesktopApp.AppointmentHostService.Patient.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\AppointmentService\DoctorAppointmentWebService.xsd">
+    <None Include="Connected Services\AppointmentHostService\DoctorAppointmentWebService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\AppointmentService\service.wsdl" />
-    <None Include="Connected Services\AppointmentService\service.xsd">
+    <None Include="Connected Services\AppointmentHostService\service.wsdl" />
+    <None Include="Connected Services\AppointmentHostService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\AppointmentService\service1.xsd">
+    <None Include="Connected Services\AppointmentHostService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\DoctorService\DoctorAppointmentDesktopApp.DoctorService.Doctor.datasource">
+    <None Include="Connected Services\DoctorHostService\DoctorAppointmentDesktopApp.DoctorHostService.Doctor.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\DoctorService\DoctorAppointmentWebService.xsd">
+    <None Include="Connected Services\DoctorHostService\DoctorAppointmentWebService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\DoctorService\service.wsdl" />
-    <None Include="Connected Services\DoctorService\service.xsd">
+    <None Include="Connected Services\DoctorHostService\service.wsdl" />
+    <None Include="Connected Services\DoctorHostService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\DoctorService\service1.xsd">
+    <None Include="Connected Services\DoctorHostService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\PatientService\DoctorAppointmentDesktopApp.PatientService.Patient.datasource">
+    <None Include="Connected Services\PatientHostService\DoctorAppointmentDesktopApp.PatientHostService.Patient.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\PatientService\DoctorAppointmentWebService.xsd">
+    <None Include="Connected Services\PatientHostService\DoctorAppointmentWebService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\PatientService\service.wsdl" />
-    <None Include="Connected Services\PatientService\service.xsd">
+    <None Include="Connected Services\PatientHostService\service.wsdl" />
+    <None Include="Connected Services\PatientHostService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\PatientService\service1.xsd">
+    <None Include="Connected Services\PatientHostService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -216,42 +217,42 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\AppointmentService\" />
-    <WCFMetadataStorage Include="Connected Services\DoctorService\" />
-    <WCFMetadataStorage Include="Connected Services\PatientService\" />
+    <WCFMetadataStorage Include="Connected Services\AppointmentHostService\" />
+    <WCFMetadataStorage Include="Connected Services\DoctorHostService\" />
+    <WCFMetadataStorage Include="Connected Services\PatientHostService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\DoctorService\configuration91.svcinfo" />
+    <None Include="Connected Services\DoctorHostService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\DoctorService\configuration.svcinfo" />
+    <None Include="Connected Services\DoctorHostService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\DoctorService\Reference.svcmap">
+    <None Include="Connected Services\DoctorHostService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\PatientService\configuration91.svcinfo" />
+    <None Include="Connected Services\PatientHostService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\PatientService\configuration.svcinfo" />
+    <None Include="Connected Services\PatientHostService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\PatientService\Reference.svcmap">
+    <None Include="Connected Services\PatientHostService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\AppointmentService\configuration91.svcinfo" />
+    <None Include="Connected Services\AppointmentHostService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\AppointmentService\configuration.svcinfo" />
+    <None Include="Connected Services\AppointmentHostService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\AppointmentService\Reference.svcmap">
+    <None Include="Connected Services\AppointmentHostService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

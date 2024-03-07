@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.ServiceModel;
 
+
 namespace DoctorAppointmentWebService
 {
     public class AppointmentService : IAppointmentService
@@ -24,6 +25,54 @@ namespace DoctorAppointmentWebService
                 connection.Open();
                 command.ExecuteNonQuery();
             }
+        }
+
+        public List<Appointment> GetAllAppointments()
+        {
+            List<Appointment> appointments = new List<Appointment>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"SELECT Appointments.AppointmentID,
+                                Appointments.DoctorID,
+                                Doctors.FirstName AS DoctorFirstName,
+                                Doctors.LastName AS DoctorLastName,
+                                Appointments.PatientID,
+                                Patients.FirstName AS PatientFirstName,
+                                Patients.LastName AS PatientLastName,
+                                Appointments.AppointmentDateTime,
+                                Appointments.StatusID,
+                                AppointmentStatus.StatusName AS Status
+                         FROM Appointments
+                         INNER JOIN Doctors ON Appointments.DoctorID = Doctors.DoctorID
+                         INNER JOIN Patients ON Appointments.PatientID = Patients.PatientID
+                         INNER JOIN AppointmentStatus ON Appointments.StatusID = AppointmentStatus.StatusID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Appointment appointment = new Appointment
+                    {
+                        AppointmentID = Convert.ToInt32(reader["AppointmentID"]),
+                        DoctorName = reader["DoctorFirstName"].ToString() + " " + reader["DoctorLastName"].ToString(),
+                        PatientName = reader["PatientFirstName"].ToString() + " " + reader["PatientLastName"].ToString(),
+                        AppointmentDateTime = Convert.ToDateTime(reader["AppointmentDateTime"]),
+                        Status = reader["status"].ToString(),   
+
+                    };
+
+                    appointments.Add(appointment);
+                }
+
+                reader.Close();
+            }
+
+            return appointments;
         }
 
         public void CancelAppointment(int appointmentId)
@@ -56,6 +105,77 @@ namespace DoctorAppointmentWebService
             }
         }
 
+        public int GetTotalAppointments()
+        {
+            int totalAppointments = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Appointments";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                totalAppointments = (int)command.ExecuteScalar();
+            }
+
+            return totalAppointments;
+        }
+
+        public int GetActiveAppointments()
+        {
+            int activeAppointments = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Appointments WHERE StatusID = 1"; // Assuming StatusID 1 represents 'Scheduled'
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                activeAppointments = (int)command.ExecuteScalar();
+            }
+
+            return activeAppointments;
+        }
+
+        public int GetCanceledAppointments()
+        {
+            int canceledAppointments = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Appointments WHERE StatusID = 2"; // Assuming StatusID 2 represents 'Cancelled'
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                canceledAppointments = (int)command.ExecuteScalar();
+            }
+
+            return canceledAppointments;
+        }
+
+        public int GetCompletedAppointments()
+        {
+            int completedAppointments = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Appointments WHERE StatusID = 3"; // Assuming StatusID 3 represents 'Completed'
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                completedAppointments = (int)command.ExecuteScalar();
+            }
+
+            return completedAppointments;
+        }
         public List<Appointment> GetDoctorAppointments(int doctorId)
         {
             List<Appointment> appointments = new List<Appointment>();

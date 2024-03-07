@@ -129,5 +129,23 @@ namespace DoctorAppointmentWebService
                 command.ExecuteNonQuery();
             }
         }
+
+        public int GetTotalDoctors()
+        {
+            int totalDoctors = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Doctors"; 
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                totalDoctors = (int)command.ExecuteScalar();
+            }
+
+            return totalDoctors;
+        }
     }
 }

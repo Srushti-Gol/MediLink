@@ -25,6 +25,9 @@ namespace DoctorAppointmentWebService
 
         [OperationContract]
         void DeleteDoctor(int doctorId);
+
+        [OperationContract]
+        int GetTotalDoctors();
     }
 
     [DataContract]

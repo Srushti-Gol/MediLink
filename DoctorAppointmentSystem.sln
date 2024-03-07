@@ -10,6 +10,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorAppointmentDesktopApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorAppointmentWebService", "DoctorAppointmentWebService\DoctorAppointmentWebService.csproj", "{BDFE3357-6E81-4283-B875-E1825012CB17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostDoctorAppointment", "HostDoctorAppointment\HostDoctorAppointment.csproj", "{67767585-2D1D-4D41-B721-9F38A014B298}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BDFE3357-6E81-4283-B875-E1825012CB17} = {BDFE3357-6E81-4283-B875-E1825012CB17}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +29,10 @@ Global
 		{BDFE3357-6E81-4283-B875-E1825012CB17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDFE3357-6E81-4283-B875-E1825012CB17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDFE3357-6E81-4283-B875-E1825012CB17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67767585-2D1D-4D41-B721-9F38A014B298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67767585-2D1D-4D41-B721-9F38A014B298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67767585-2D1D-4D41-B721-9F38A014B298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67767585-2D1D-4D41-B721-9F38A014B298}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

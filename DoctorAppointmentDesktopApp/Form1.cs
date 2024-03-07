@@ -107,5 +107,10 @@ namespace DoctorAppointmentDesktopApp
             d.Show();
             label2.Text = "Appintments";
         }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

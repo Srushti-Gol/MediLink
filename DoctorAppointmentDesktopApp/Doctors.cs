@@ -1,4 +1,4 @@
-﻿using DoctorAppointmentDesktopApp.DoctorService;
+﻿using DoctorAppointmentDesktopApp.DoctorHostService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace DoctorAppointmentDesktopApp
         public Doctors()
         {
             InitializeComponent();
-            _doctorServiceClient = new DoctorService.DoctorServiceClient();
+            _doctorServiceClient = new DoctorHostService.DoctorServiceClient();
             RefreshDoctors();
         }
 
@@ -86,6 +86,11 @@ namespace DoctorAppointmentDesktopApp
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Doctors_Load(object sender, EventArgs e)
         {
 
         }

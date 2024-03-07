@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="5e3bf8f9-fe42-48da-b49b-b2c338e7b188" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/DoctorAppointmentWebService/DoctorService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="4092737d-0c86-4638-be99-f06f8c970af0" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/DoctorAppointmentWebService/DoctorService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="053e0c9b-0986-444f-a90a-654b5c474576" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/DoctorAppointmentWebService/DoctorService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="dc481b34-5c4e-4b40-9c60-261fca151679" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/DoctorAppointmentWebService/DoctorService/mex" />
+    <MetadataFile FileName="DoctorAppointmentWebService.xsd" MetadataType="Schema" ID="1a35fcc3-a101-4e44-ab45-edac2324c300" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/DoctorAppointmentWebService/DoctorService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -132,5 +132,23 @@ namespace DoctorAppointmentWebService
                 command.ExecuteNonQuery();
             }
         }
+
+        public int GetTotalPatients()
+        {
+            int totalPatient = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Patients"; // Assuming StatusID 1 represents 'Scheduled'
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                totalPatient = (int)command.ExecuteScalar();
+            }
+
+            return totalPatient;
+        }
     }
 }
