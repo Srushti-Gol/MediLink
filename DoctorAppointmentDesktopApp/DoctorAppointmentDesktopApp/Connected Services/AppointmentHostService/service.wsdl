@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="AppointmentService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/DoctorAppointmentWebService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAppointmentService_ScheduleAppointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:ScheduleAppointment" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_ScheduleAppointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ScheduleAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_CancelAppointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelAppointment" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_CancelAppointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_CompleteAppointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompleteAppointment" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_CompleteAppointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompleteAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetDoctorAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctorAppointments" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetDoctorAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctorAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetPatientAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientAppointments" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetPatientAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetTotalAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalAppointments" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetTotalAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetActiveAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveAppointments" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetActiveAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetCanceledAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCanceledAppointments" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetCanceledAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCanceledAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetCompletedAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompletedAppointments" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetCompletedAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompletedAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetDoctors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctors" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetDoctors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetPatients_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatients" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetPatients_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetAllAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAppointments" />
+  </wsdl:message>
+  <wsdl:message name="IAppointmentService_GetAllAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAppointmentService">
+    <wsdl:operation name="ScheduleAppointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/ScheduleAppointment" message="tns:IAppointmentService_ScheduleAppointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/ScheduleAppointmentResponse" message="tns:IAppointmentService_ScheduleAppointment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelAppointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/CancelAppointment" message="tns:IAppointmentService_CancelAppointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/CancelAppointmentResponse" message="tns:IAppointmentService_CancelAppointment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompleteAppointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/CompleteAppointment" message="tns:IAppointmentService_CompleteAppointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/CompleteAppointmentResponse" message="tns:IAppointmentService_CompleteAppointment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctorAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/GetDoctorAppointments" message="tns:IAppointmentService_GetDoctorAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/GetDoctorAppointmentsResponse" message="tns:IAppointmentService_GetDoctorAppointments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/GetPatientAppointments" message="tns:IAppointmentService_GetPatientAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/GetPatientAppointmentsResponse" message="tns:IAppointmentService_GetPatientAppointments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/GetTotalAppointments" message="tns:IAppointmentService_GetTotalAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/GetTotalAppointmentsResponse" message="tns:IAppointmentService_GetTotalAppointments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/GetActiveAppointments" message="tns:IAppointmentService_GetActiveAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/GetActiveAppointmentsResponse" message="tns:IAppointmentService_GetActiveAppointments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCanceledAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/GetCanceledAppointments" message="tns:IAppointmentService_GetCanceledAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/GetCanceledAppointmentsResponse" message="tns:IAppointmentService_GetCanceledAppointments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompletedAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/GetCompletedAppointments" message="tns:IAppointmentService_GetCompletedAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/GetCompletedAppointmentsResponse" message="tns:IAppointmentService_GetCompletedAppointments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctors">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/GetDoctors" message="tns:IAppointmentService_GetDoctors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/GetDoctorsResponse" message="tns:IAppointmentService_GetDoctors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatients">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/GetPatients" message="tns:IAppointmentService_GetPatients_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/GetPatientsResponse" message="tns:IAppointmentService_GetPatients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppointmentService/GetAllAppointments" message="tns:IAppointmentService_GetAllAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppointmentService/GetAllAppointmentsResponse" message="tns:IAppointmentService_GetAllAppointments_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAppointmentService" type="tns:IAppointmentService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ScheduleAppointment">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/ScheduleAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAppointment">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/CancelAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompleteAppointment">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/CompleteAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctorAppointments">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/GetDoctorAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientAppointments">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/GetPatientAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalAppointments">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/GetTotalAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveAppointments">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/GetActiveAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCanceledAppointments">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/GetCanceledAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompletedAppointments">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/GetCompletedAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctors">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/GetDoctors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatients">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/GetPatients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAppointments">
+      <soap:operation soapAction="http://tempuri.org/IAppointmentService/GetAllAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AppointmentService">
+    <wsdl:port name="BasicHttpBinding_IAppointmentService" binding="tns:BasicHttpBinding_IAppointmentService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/DoctorAppointmentWebService/AppointmentService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
